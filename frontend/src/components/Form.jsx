@@ -3,6 +3,7 @@ import api from "../api.js";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constant.js";
 import "../styles/Form.css";
+import LoadingIndicator from "./LoadingIndicator.jsx";
 
 function Form({route, method}){
     const [username, setUsername] = useState("");
@@ -38,6 +39,7 @@ function Form({route, method}){
         <h1>{name}</h1>
         <input type="text" className="form-input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
         <input type="password" className="form-input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        {loading && <LoadingIndicator/>}
         <button type="submit" className="form-button" disabled={loading}>
             {loading ? "Please wait..." : name}
         </button>
