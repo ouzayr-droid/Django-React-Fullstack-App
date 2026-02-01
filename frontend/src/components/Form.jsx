@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../api.js";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constant.js";
+import "../styles/Form.css";
 
 function Form({route, method}){
     const [username, setUsername] = useState("");
@@ -25,7 +26,8 @@ function Form({route, method}){
                 }else{
                     navigate("/login");
                 }
-        } catch (error) {
+        }
+    } catch (error) {
             alert("An error occurred. Please try again.");
             console.error("Form submission error:", error);
         }finally{
@@ -41,3 +43,5 @@ function Form({route, method}){
         </button>
     </form>;
 }
+
+export default Form;
